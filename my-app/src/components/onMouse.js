@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 
 class OnMouse extends Component {
+
     state = {
-        img: "./img/EmptySpace.PNG"
+        img: require('./img/white.png')
       }
     
       render() {
@@ -13,13 +14,13 @@ class OnMouse extends Component {
               alt="plupps"
               onMouseEnter={() => {
                 this.setState({
-                  img: "./img/RedPiece.PNG"
+                  img: require('./img/REDCIRCLE.png')
                 })
               }}
     
               onMouseOut={() => {
                 this.setState({
-                  img: "./img/EmptySpace.PNG"
+                  img: require('./img/white.png')
                 })
               }}
             />
