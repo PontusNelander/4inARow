@@ -25,7 +25,7 @@ class Child extends Component {
     render() {
         return (
             <div className="child" onClick={() => this.addPlupp()} style={{backgroundImage: this.state.isAvailable ? `url(${Empty})` : this.state.isRed ? `url(${redPlupp})` : `url(${gulPlupp})` }}>
-                
+                &nbsp;
                 </div>
         )
     }

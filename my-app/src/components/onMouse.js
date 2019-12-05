@@ -3,30 +3,26 @@ import White from './img/WhitePiece.PNG'
 import Red from './img/RedPiece.PNG'
 
 class OnMouse extends Component {
-  state = {
-    img: White
-  }
-  changeImage = () => {
-    this.setState(() => {
-      return {img: }
-    })
-  }
 
-  render() {
-    return (
-      <div>
-        <img
+    state = {
+        img: require('./img/white.png')
+      }
+    
+      render() {
+        return (
+          <div>
+            <img
               src={this.state.img}
               alt="plupps"
               onMouseEnter={() => {
                 this.setState({
-                  img: "./img/RedPiece.PNG"
+                  img: require('./img/REDCIRCLE.png')
                 })
               }}
     
               onMouseOut={() => {
                 this.setState({
-                  img: "./img/EmptySpace.PNG"
+                  img: require('./img/white.png')
                 })
               }}
             />
