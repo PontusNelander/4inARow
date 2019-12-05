@@ -8,6 +8,7 @@ class GameDisplay extends Component {
         return (
             <div>
             <div>Game Display!</div>
+            
             <Child />
             </div>
         )
