@@ -1,0 +1,11 @@
+.child{
+    background-repeat: no-repeat;
+    /* height: 100%; */
+    padding: 50px;
+    padding-right: 20px;
+
+}
+.tableStyle{
+    background-color: #175dde;
+     border: solid 2px black
+}
