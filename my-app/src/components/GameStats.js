@@ -7,16 +7,13 @@ class GameStats extends Component {
 
         return (
             <div>
-<<<<<<< HEAD
                 Game Stats!
                 <button onClick={this.refresh}>NewGame</button>
             </div>
 
-=======
             <div>Turn: {this.state.red ? "red" : "yellow"}</div>
             <div>Number of moves: {this.state.numberOfMoves}</div>
             </div>
->>>>>>> ca7836f... Moving work from child to game display since new approach to add tiles
         )
     }
 }
