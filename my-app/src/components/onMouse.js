@@ -1,14 +1,21 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import White from './img/WhitePiece.PNG'
+import Red from './img/RedPiece.PNG'
 
 class OnMouse extends Component {
-    state = {
-        img: "./img/EmptySpace.PNG"
-      }
-    
-      render() {
-        return (
-          <div>
-            <img
+  state = {
+    img: White
+  }
+  changeImage = () => {
+    this.setState(() => {
+      return {img: }
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <img
               src={this.state.img}
               alt="plupps"
               onMouseEnter={() => {
@@ -23,8 +30,8 @@ class OnMouse extends Component {
                 })
               }}
             />
-          </div>
-        )
-      }
-    }
-  export default OnMouse;
+      </div>
+    )
+  }
+}
+export default OnMouse;

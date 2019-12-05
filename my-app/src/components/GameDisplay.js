@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Empty from './img/EmptySpace.PNG';
 import redPlupp from './img/RedSpace.PNG';
 import gulPlupp from './img/YellowSpace.PNG';
 import Child from './Child';
 import OnMouse from './onMouse';
+import White from './img/WhitePiece.PNG'
 
 class GameDisplay extends Component {
     constructor(props) {
@@ -14,21 +15,23 @@ class GameDisplay extends Component {
         console.log(this.state.children)
     }
 
-    state = {children: [], turnRed: true, numberOfMoves: 0}
+    state = { children: [], turnRed: true, numberOfMoves: 0 }
 
     isValidMove = (x) => {
         x && this.setState((y) => {
-            return {turnRed: !y.turnRed,
-            numberOfMoves: y.numberOfMoves+1}
+            return {
+                turnRed: !y.turnRed,
+                numberOfMoves: y.numberOfMoves + 1
+            }
         })
     }
 
     getChildren = () => {
         let z = []
         let index = 0;
-        for(let x = 0; x<6; x++) {
-            let arr=[]
-            for(let y = 0; y < 7; y++) {
+        for (let x = 0; x < 6; x++) {
+            let arr = []
+            for (let y = 0; y < 7; y++) {
                 let id = index;
                 let child = <Child isAvailable={true} isRed={true} key={id} checkAvailable={this.isValidMove} />
                 arr.push(child)
@@ -39,35 +42,38 @@ class GameDisplay extends Component {
         return z
     }
 
-    render()
-    {
+    render() {
         return (
             <div>
-            <div>Turn: {this.state.turnRed ? "red" : "yellow"}</div>
-            <div>Number of moves: {this.state.numberOfMoves}</div>
-            <div>Game Display!</div>
-
-            <table className="tableStyle">
-                <tbody>
+                <div>Turn: {this.state.turnRed ? "red" : "yellow"}</div>
+                <div>Number of moves: {this.state.numberOfMoves}</div>
+                <div>Game Display!</div>
+                <div>
+                    <table>
                     <tr>
-                        <td><OnMouse /></td>
-                        <td><OnMouse /></td>
-                        <td><OnMouse /></td>
-                        <td><OnMouse /></td>
-                        <td><OnMouse /></td>
-                        <td><OnMouse /></td>
-                        <td><OnMouse /></td>
-                    </tr>
-                    {this.state.children.map((x, indexX) => {
-                        return (<tr key={indexX}>
-                        {x.map((y, indexY) => {
-                        return <td key={indexY}>{y}</td>;
+                            <td><OnMouse/></td>
+                            <td><OnMouse /></td>
+                            <td><OnMouse /></td>
+                            <td><OnMouse /></td>
+                            <td><OnMouse /></td>
+                            <td><OnMouse /></td>
+                            <td><OnMouse /></td>
+                        </tr>
+                    </table>
+                    </div>
+                <table className="tableStyle">
+                    <tbody>
+                        
+                        {this.state.children.map((x, indexX) => {
+                            return (<tr key={indexX}>
+                                {x.map((y, indexY) => {
+                                    return <td key={indexY}>{y}</td>;
+                                })}
+                            </tr>);
                         })}
-                        </tr>);
-                    })}
 
-            </tbody>
-            </table>
+                    </tbody>
+                </table>
             </div>
 
         );
