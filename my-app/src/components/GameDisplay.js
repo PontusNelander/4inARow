@@ -3,6 +3,7 @@ import Empty from './img/EmptySpace.PNG';
 import redPlupp from './img/RedSpace.PNG';
 import gulPlupp from './img/YellowSpace.PNG';
 import Child from './Child';
+import OnMouse from './onMouse';
 
 class GameDisplay extends Component {
     constructor(props) {
@@ -38,9 +39,6 @@ class GameDisplay extends Component {
         return z
     }
 
-    // click child
-
-
     render()
     {
         return (
@@ -51,6 +49,15 @@ class GameDisplay extends Component {
 
             <table>
                 <tbody>
+                    <tr>
+                        <td><OnMouse /></td>
+                        <td><OnMouse /></td>
+                        <td><OnMouse /></td>
+                        <td><OnMouse /></td>
+                        <td><OnMouse /></td>
+                        <td><OnMouse /></td>
+                        <td><OnMouse /></td>
+                    </tr>
                     {this.state.children.map((x, indexX) => {
                         return (<tr key={indexX}>
                         {x.map((y, indexY) => {
