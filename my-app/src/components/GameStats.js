@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
 class GameStats extends Component {
-    refresh = () => {
-        window.location.reload();
-    }
+
+    state = { red: this.props.turnRed, numberOfMoves: this.props.numberOfMoves}
     render() {
 
         return (

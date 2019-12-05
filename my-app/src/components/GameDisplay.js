@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import Empty from './img/EmptySpace.PNG';
+import redPlupp from './img/RedSpace.PNG';
+import gulPlupp from './img/YellowSpace.PNG';
 import Child from './Child';
 import Empty from './img/EmptySpace.PNG';
 import redPlupp from './img/RedSpace.PNG';
@@ -12,58 +15,59 @@ class GameDisplay extends Component {
         let z = []
         z = this.getChildren()
         this.state.children = z;
+        console.log(this.state.children)
     }
 
-    state = {children: []}
+    state = {children: [], turnRed: true, numberOfMoves: 0}
+
+    isValidMove = (x) => {
+        x && this.setState((y) => {
+            return {turnRed: !y.turnRed,
+            numberOfMoves: y.numberOfMoves+1}
+        })
+    }
 
     getChildren = () => {
         let z = []
-        for(let i = 0; i < 42; i++) {
-            let id = i;
-            let child = <Child className="child" onClick={this.addPlupp} style={{ backgroundImage: this.state.isAvailable ? `url(${Empty})` : this.state.isRed ? `url(${redPlupp})` : `url(${gulPlupp})` }}isAvailable={true} isRed={true} key={id} />
-            z.push(child)
+        let index = 0;
+        for(let x = 0; x<6; x++) {
+            let arr=[]
+            for(let y = 0; y < 7; y++) {
+                let id = index;
+                let child = <Child isAvailable={true} isRed={true} key={id} checkAvailable={this.isValidMove} />
+                arr.push(child)
+                index++;
+            }
+            z.push(arr)
         }
         return z
     }
+
+    // click child
 
 
     render()
     {
         return (
             <div>
+            <div>Turn: {this.state.turnRed ? "red" : "yellow"}</div>
+            <div>Number of moves: {this.state.numberOfMoves}</div>
             <div>Game Display!</div>
 
             <table className="tableStyle">
                 <tbody>
-            <tr>
-            {this.state.children.map((c,index) => { 
-    return index < 7 && <td key={index}>{c}</td> })}
-            </tr>
-            <tr>
-            {this.state.children.map((c,index) => { 
-    return (index >= 7 && index < 14) && <td key={index}>{c}</td> })}
-            </tr>
-            <tr>
-            {this.state.children.map((c,index) => { 
-    return (index >= 14 && index < 21) && <td key={index}>{c}</td> })}
-            </tr>
-            <tr>
-            {this.state.children.map((c,index) => { 
-    return (index >= 21 && index < 28) && <td key={index}>{c}</td> })}
-            </tr>
-            <tr>
-            {this.state.children.map((c,index) => { 
-    return (index >= 28 && index < 35) && <td key={index}>{c}</td> })}
-            </tr>
-            <tr>
-            {this.state.children.map((c,index) => { 
-    return (index >= 35 && index < 42) && <td key={index}>{c}</td> })}
-            </tr>
+                    {this.state.children.map((x, indexX) => {
+                        return (<tr key={indexX}>
+                        {x.map((y, indexY) => {
+                        return <td key={indexY}>{y}</td>;
+                        })}
+                        </tr>);
+                    })}
+
             </tbody>
             </table>
-
-
             </div>
+
         );
     }
 }

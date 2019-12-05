@@ -7,22 +7,24 @@ import GameDisplay from './GameDisplay.js'
 
 
 class Child extends Component {
-    state = { isAvailable: true, isRed: true }
+    state={isAvailable : true, isRed: true}
     addPlupp = () => {
+
+
         this.setState(x => {
 
             
                 return {isAvailable: false}
             
         })
-    }
+        this.props.checkAvailable(this.state.isAvailable)
 
-    
-    
+    }
     render() {
         return (
-            <div className="child" onClick={this.addPlupp} style={{ backgroundImage: this.state.isAvailable ? `url(${Empty})` : this.state.isRed ? `url(${redPlupp})` : `url(${gulPlupp})` }}>
-            </div>
+            <div className="child" onClick={this.addPlupp} style={{backgroundImage: this.state.isAvailable ? `url(${Empty})` : this.state.isRed ? `url(${redPlupp})` : `url(${gulPlupp})` }}>
+                Child!
+                </div>
         )
     }
 }
