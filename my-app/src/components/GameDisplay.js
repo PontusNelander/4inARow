@@ -33,13 +33,56 @@ class GameDisplay extends Component {
             let arr = []
             for (let y = 0; y < 7; y++) {
                 let id = index;
-                let child = <Child isAvailable={true} isRed={true} key={id} checkAvailable={this.isValidMove} />
+                let childref = React.createRef()
+                let child = <Child ref={childref} key={id} checkAvailable={this.isValidMove} />
                 arr.push(child)
                 index++;
             }
             z.push(arr)
         }
         return z
+    }
+
+    checkColumn = (x) => {
+
+
+
+
+        // this.state.children[x].forEach(c => {
+        //     if (c.ref.current.state.isAvailable) {
+        //         this.setState(x => {
+        //             return {
+        //                 isAvailable: false,
+        //                 // isRed: false,
+        //                 img: `url(${gulPlupp})`
+
+        //             }
+
+
+
+        //         })
+
+        //     }
+
+        // });
+        // console.log(this.state.children[x][2].ref.current.state.isAvailable)
+        // this.state.children[x].map((c, index) => {
+        //     if (c.ref.current.state.isAvailable) {
+
+        //     }
+
+        // })
+
+
+        for (let i = 5; i >= 0; i--) {
+
+            // console.log(this.state.children[x][i].ref.current.state.isAvailable)
+            if (this.state.children[i][x].ref.current.state.isAvailable) {
+                this.state.children[i][x].ref.current.state.isAvailable = false;
+                this.state.children[i][x].ref.current.addPlupp(this.state.turnRed);
+                break;
+            }
+        }
     }
 
     render() {
@@ -50,20 +93,20 @@ class GameDisplay extends Component {
                 <div>Game Display!</div>
                 <div>
                     <table>
-                    <tr>
-                            <td><OnMouse/></td>
-                            <td><OnMouse /></td>
-                            <td><OnMouse /></td>
-                            <td><OnMouse /></td>
-                            <td><OnMouse /></td>
-                            <td><OnMouse /></td>
-                            <td><OnMouse /></td>
+                        <tr>
+                            <td id={0} onClick={() => this.checkColumn(0)}><OnMouse /></td>
+                            <td id={1} onClick={() => this.checkColumn(1)}><OnMouse /></td>
+                            <td id={2} onClick={() => this.checkColumn(2)}><OnMouse /></td>
+                            <td id={3} onClick={() => this.checkColumn(3)}><OnMouse /></td>
+                            <td id={4} onClick={() => this.checkColumn(4)}><OnMouse /></td>
+                            <td id={5} onClick={() => this.checkColumn(5)}><OnMouse /></td>
+                            <td id={6} onClick={() => this.checkColumn(6)}><OnMouse /></td>
                         </tr>
                     </table>
-                    </div>
+                </div>
                 <table className="tableStyle">
                     <tbody>
-                        
+
                         {this.state.children.map((x, indexX) => {
                             return (<tr key={indexX}>
                                 {x.map((y, indexY) => {
