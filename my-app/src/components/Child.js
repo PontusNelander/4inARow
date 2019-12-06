@@ -7,7 +7,7 @@ import GameDisplay from './GameDisplay.js'
 
 
 class Child extends Component {
-    state={isAvailable : true, isRed: true, img: `url(${Empty})`}
+    state={isAvailable : true, isRed: 0, img: `url(${Empty})`}
 
     addPlupp = (x) => {
 
@@ -15,7 +15,7 @@ class Child extends Component {
             this.setState(x => {
     
                
-                    return {img: `url(${redPlupp})`, isRed: true}
+                    return {img: `url(${redPlupp})`,isRed: 1}
                 
             })
 
@@ -24,7 +24,7 @@ class Child extends Component {
             this.setState(x => {
     
                 
-                return {img: `url(${gulPlupp})`,isRed: false}
+                return {img: `url(${gulPlupp})`,isRed: 2}
             
             })
         }

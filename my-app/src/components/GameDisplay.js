@@ -55,11 +55,126 @@ class GameDisplay extends Component {
 
             if (this.state.children[i][x].ref.current.state.isAvailable) {
                 this.state.children[i][x].ref.current.state.isAvailable = false;
-                this.wrapper(this.state.children[i][x].ref.current)                
+                this.wrapper(this.state.children[i][x].ref.current) 
+                this.checkFor4IAR();               
                 break;
             }
         }
     }
+    checkFor4IAR(x){
+        var playingField = this.state.children;
+        for (let y = 0; y < 6; y++){
+            for (let x = 0; x < 7; x++)
+            { 
+                //horisontellt spelare röd
+                if (x <=3 && playingField[y][x].ref.current.state.isAvailable === false && playingField[y][x].ref.current.state.isRed === 1)
+                {
+                    if (playingField[y][x+1].ref.current.state.isAvailable === false && playingField[y][x+1].ref.current.state.isRed === 1 
+                        && playingField[y][x + 2].ref.current.state.isAvailable === false && playingField[y][x+2].ref.current.state.isRed === 1
+                        && playingField[y][x + 3].ref.current.state.isAvailable == false && playingField[y][x+3].ref.current.state.isRed === 1)
+                    {
+                        console.log("Yellow wins, wanna play again?")
+                        if(window.confirm("Red wins, wanna play again?")){window.location.reload()}
+                    }
+                }
+                //vertikalt spelare röd
+                if (y <=2 && playingField[y][x].ref.current.state.isAvailable === false && playingField[y][x].ref.current.state.isRed === 1)
+                    {
+                        if (playingField[y+1][x].ref.current.state.isAvailable === false && playingField[y+1][x].ref.current.state.isRed === 1 
+                            && playingField[y+2][x].ref.current.state.isAvailable === false && playingField[y+2][x].ref.current.state.isRed  === 1
+                            && playingField[y+3][x].ref.current.state.isAvailable == false && playingField[y+3][x].ref.current.state.isRed === 1)
+                        {
+                            console.log("Yellow wins, wanna play again?")
+                           if(window.confirm("Red wins, wanna play again?")){window.location.reload()}
+                        }
+                    }
+                //horisontellt spelare gul
+                if (x <=3 && playingField[y][x].ref.current.state.isAvailable === false && playingField[y][x].ref.current.state.isRed === 2)
+                {
+                    if (playingField[y][x+1].ref.current.state.isAvailable === false &&  playingField[y][x+1].ref.current.state.isRed === 2
+                        && playingField[y][x + 2].ref.current.state.isAvailable === false && playingField[y][x+2].ref.current.state.isRed === 2
+                        && playingField[y][x + 3].ref.current.state.isAvailable == false && playingField[y][x+3].ref.current.state.isRed === 2)
+                    {
+                        console.log("Yellow wins, wanna play again?")
+                        if(window.confirm("Yellow wins, wanna play again?")){window.location.reload()}
+                    }
+                }
+                //vertikalt spelare gul
+                if (y <=2 && playingField[y][x].ref.current.state.isAvailable === false && playingField[y][x].ref.current.state.isRed === 2)
+                    {
+                        if (playingField[y+1][x].ref.current.state.isAvailable === false && playingField[y+1][x].ref.current.state.isRed === 2
+                            && playingField[y+2][x].ref.current.state.isAvailable === false && playingField[y+2][x].ref.current.state.isRed === 2
+                            && playingField[y+3][x].ref.current.state.isAvailable === false && playingField[y+3][x].ref.current.state.isRed === 2)
+                        {
+                            console.log("Yellow wins, wanna play again?")
+                            if(window.confirm("Yellow wins, wanna play again?"))
+                            {window.location.reload()}
+                        }
+                }
+                
+                //Diagonal höger till vänster spelare Gul
+                if (x <=3 && playingField[y][x].ref.current.state.isAvailable === false && playingField[y][x].ref.current.state.isRed === 2)
+                {
+                    if (playingField[y-1][x+1].ref.current.state.isAvailable === false &&  playingField[y-1][x+1].ref.current.state.isRed === 2
+                        && playingField[y-2][x + 2].ref.current.state.isAvailable === false && playingField[y-2][x+2].ref.current.state.isRed === 2
+                        && playingField[y-3][x + 3].ref.current.state.isAvailable == false && playingField[y-3][x+3].ref.current.state.isRed === 2)
+                    {
+                        console.log("Spelare Gul h -> v diagonal")
+                        if(window.confirm("Yellow wins, wanna play again?"))
+                            {window.location.reload()}
+                    }
+                }
+                //Diagonal höger till vänster spelare röd
+                if (x <=3 && playingField[y][x].ref.current.state.isAvailable === false && playingField[y][x].ref.current.state.isRed === 1)
+                {
+                    if (playingField[y-1][x+1].ref.current.state.isAvailable === false &&  playingField[y-1][x+1].ref.current.state.isRed === 1
+                        && playingField[y-2][x + 2].ref.current.state.isAvailable === false && playingField[y-2][x+2].ref.current.state.isRed === 1
+                        && playingField[y-3][x + 3].ref.current.state.isAvailable == false && playingField[y-3][x+3].ref.current.state.isRed === 1)
+                    {
+                        console.log("Spelare röd h -> v diagonal")
+                        if(window.confirm("Red wins, wanna play again?"))
+                            {window.location.reload()}
+                    }
+                }
+                //Diagonal vänster höger spelare Gul
+                if (x >= 3 && playingField[y][x].ref.current.state.isAvailable === false && playingField[y][x].ref.current.state.isRed === 2)
+                {
+                    if (playingField[y-1][x-1].ref.current.state.isAvailable === false &&  playingField[y-1][x-1].ref.current.state.isRed === 2
+                        && playingField[y-2][x -2].ref.current.state.isAvailable === false && playingField[y-2][x-2].ref.current.state.isRed === 2
+                        && playingField[y-3][x -3].ref.current.state.isAvailable == false && playingField[y-3][x-3].ref.current.state.isRed === 2)
+                    {
+                        console.log("Spelare Gul v -> h diagonal")
+                        if(window.confirm("Yellow wins, wanna play again?"))
+                            {window.location.reload()}
+                    }
+                }
+                //Diagonal vänster höger spelare röd
+                if (x >= 3 && playingField[y][x].ref.current.state.isAvailable === false && playingField[y][x].ref.current.state.isRed === 1)
+                {
+                    if (playingField[y-1][x-1].ref.current.state.isAvailable === false &&  playingField[y-1][x-1].ref.current.state.isRed === 1
+                        && playingField[y-2][x - 2].ref.current.state.isAvailable === false && playingField[y-2][x-2].ref.current.state.isRed === 1
+                        && playingField[y-3][x - 3].ref.current.state.isAvailable == false && playingField[y-3][x-3].ref.current.state.isRed === 1)
+                    {
+                        console.log("Spelare röd v -> h diagonal")
+                        if(window.confirm("Red wins, wanna play again?"))
+                            {window.location.reload()}
+                    }
+                }
+
+
+
+
+
+
+            }
+        }
+    }
+
+
+
+
+
+
     refresh = () => {
         window.location.reload();
     }
