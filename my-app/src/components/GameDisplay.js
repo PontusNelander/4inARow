@@ -45,6 +45,7 @@ class GameDisplay extends Component {
     wrapper = (child) => {
         child.addPlupp(this.state.turnRed);
         this.isValidMove(child.props.checkAvailable);
+        
     }
 
     checkColumn = (x) => {
@@ -54,13 +55,12 @@ class GameDisplay extends Component {
 
             if (this.state.children[i][x].ref.current.state.isAvailable) {
                 this.state.children[i][x].ref.current.state.isAvailable = false;
-                this.wrapper(this.state.children[i][x].ref.current)
-                // this.state.children[i][x].ref.current.addPlupp(this.state.turnRed);               
+                this.wrapper(this.state.children[i][x].ref.current)                
                 break;
             }
         }
     }
-    refresh = () =>{
+    refresh = () => {
         window.location.reload();
     }
 
