@@ -60,13 +60,17 @@ class GameDisplay extends Component {
             }
         }
     }
+    refresh = () =>{
+        window.location.reload();
+    }
 
     render() {
         return (
             <div>
-                <div>Turn: {this.state.turnRed ? "red" : "yellow"}</div>
-                <div>Number of moves: {this.state.numberOfMoves}</div>
-                <div>Game Display!</div>
+                <div className="turnStyle">Turn: {this.state.turnRed ? "red" : "yellow"}</div>
+                <div className="turnStyle">Number of moves: {this.state.numberOfMoves}</div>
+                <button className="newGameStyle" onClick={this.refresh}>New Game!!</button>
+                <div></div>
                 <div>
                     <table>
                         <tr>

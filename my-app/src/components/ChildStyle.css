@@ -1,7 +1,11 @@
 .child{
     background-repeat: no-repeat;  
     padding: 60px;
+    padding-left: 47px;
+
     background-color: #175dde;
+    border: solid 8px  #175dde;
+    padding-bottom: 40px;
     
 
 }
@@ -9,4 +13,25 @@
     background-color: #175dde;
      border: solid 4px black;
 
+}
+.onMouseStyle{
+    height: 100px;
+    width: 100px;
+}
+.onMouseDiv{
+    padding-right: 15px;
+    padding-left: 14px;
+    padding-top: 20px;
+}
+.turnStyle{
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.newGameStyle{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    border-radius: 20px;
+    background-color:  #175dde;
+    color: white;
 }

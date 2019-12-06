@@ -11,11 +11,11 @@ class Child extends Component {
 
     addPlupp = (x) => {
 
-        if(x === false){
+        if(x === true){
             this.setState(x => {
     
                
-                    return {img: `url(${redPlupp})`}
+                    return {img: `url(${redPlupp})`, isRed: true}
                 
             })
 
@@ -24,7 +24,7 @@ class Child extends Component {
             this.setState(x => {
     
                 
-                return {img: `url(${gulPlupp})`}
+                return {img: `url(${gulPlupp})`,isRed: false}
             
             })
         }

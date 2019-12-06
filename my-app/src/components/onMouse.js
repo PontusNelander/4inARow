@@ -10,8 +10,8 @@ class OnMouse extends Component {
     
       render() {
         return (
-          <div>
-            <img
+          <div className="onMouseDiv">
+            <img className="onMouseStyle"
               src={this.state.img}
               alt="plupps"
               onMouseEnter={() => {
