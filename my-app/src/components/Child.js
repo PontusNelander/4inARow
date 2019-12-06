@@ -11,20 +11,30 @@ class Child extends Component {
 
     addPlupp = (x) => {
 
+        if(x === false){
+            this.setState(x => {
+    
+               
+                    return {img: `url(${redPlupp})`}
+                
+            })
 
-        this.setState(x => {
-
-           
-                return {img: x == false ? `url(${redPlupp})` : `url(${gulPlupp})`}
+        }
+        else{
+            this.setState(x => {
+    
+                
+                return {img: `url(${gulPlupp})`}
             
-        })
+            })
+        }
         this.props.checkAvailable(this.state.isAvailable)
-
+        
     }
     // this.state.isAvailable ? this.state.img : this.state.isRed ? `url(${redPlupp})` : `url(${gulPlupp})` 
     render() {
         return (
-            <div className="child" onClick={() => this.addPlupp()} style={{backgroundImage: this.state.img}}>
+            <div className="child" style={{backgroundImage: this.state.img}}>
                 &nbsp;
                 </div>
         )
